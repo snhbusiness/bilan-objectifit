@@ -93,10 +93,10 @@ function intro(){
 }
 function showQ(){
  var it=Q[step]; bar.style.width=(step/Q.length*100)+"%";
- var o=it.opts.map(function(x){return '<button class="opt" onclick="answer('+JSON.stringify(x[1])+')">'+x[0]+'</button>';}).join("");
+ var o=it.opts.map(function(x,idx){return '<button class="opt" onclick="answer('+idx+')">'+x[0]+'</button>';}).join("");
  render('<div class="stage"><div class="qnum">Question '+it.num+'</div><div class="q exp">'+it.q+'</div><div class="opts">'+o+'</div></div>');
 }
-function answer(v){ ans[Q[step].key]=v; next(); }
+function answer(idx){ ans[Q[step].key]=Q[step].opts[idx][1]; next(); }
 function next(){ step++; step<Q.length?showQ():reveal(); }
 
 function radar(vals,labels){
